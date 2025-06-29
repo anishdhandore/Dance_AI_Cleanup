@@ -14,9 +14,7 @@ A cutting-edge AI-powered dance generation platform that analyzes text emotions 
 
 ## Live Project
 
-**Frontend:** [Netlify Deployment](https://dancingai.netlify.app)
-
-**Backend:** [Render Deployment](https://dance-ai-ikhi.onrender.com)
+**DanceAI:** [App Deployment](https://dancingai.netlify.app)
 
 ## Deployment Details
 
