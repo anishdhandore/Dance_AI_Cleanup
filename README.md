@@ -34,6 +34,26 @@ A cutting-edge AI-powered dance generation platform that analyzes text emotions 
 - Support Vector Regression for emotion intensity
 - Hosted on HuggingFace: [SVR Model](https://huggingface.co/anishdhandore/SVR_text_intensity)
 
+## Model Performance
+
+### RoBERTa Emotion Classification Model
+- **Overall Accuracy:** 86.6%
+- **Hamming Loss:** 0.134
+- **Jaccard Score:** 0.498
+- **Category-wise F1 Scores:**
+  - Positive Affect Joy: 0.75
+  - Sadness Low Arousal: 0.48
+  - Anger High Arousal: 0.50
+  - Fear Anxiety: 0.44
+  - Surprise Epistemic: 0.43
+- **Training Efficiency:**
+  - ~486 samples/sec, ~65 seconds per epoch, total training time ~1.5 hours
+
+### SVR Intensity Model
+- **Test Set MAE (Mean Absolute Error):** 0.1551
+- **Test Set RMSE (Root Mean Squared Error):** 0.1922
+- **Test Set Pearson Correlation:** 0.4773
+
 ## Technical Architecture
 
 ### Frontend

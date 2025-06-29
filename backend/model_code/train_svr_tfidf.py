@@ -79,9 +79,6 @@ def finalize_and_evaluate_svr(train_df, dev_df, test_df):
     print(f"Test Set RMSE: {rmse:.4f}")
     print(f"Test Set Pearson Correlation: {pearson_corr:.4f}")
 
-    joblib.dump(pipeline, MODEL_SAVE_PATH)
-    print(f"\nFinal model saved to {MODEL_SAVE_PATH}")
-
 if __name__ == "__main__":
     print("Loading training data...")
     train_df = load_data(TRAIN_FILE)
