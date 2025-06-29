@@ -16,6 +16,7 @@
     "object.entries": "1.1.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-scripts": "5.0.1",
     "three": "^0.151.0",
     "three-mesh-bvh": "^0.6.8",
     "zustand": "4.4.1"
@@ -49,7 +50,6 @@
     "chokidar": "^3.5.3",
     "eslint-plugin-react": "7.37.5",
     "html-webpack-plugin": "^5.5.0",
-    "react-scripts": "5.0.1",
     "webpack": "^5.75.0",
     "webpack-dev-server": "^4.11.1"
   },

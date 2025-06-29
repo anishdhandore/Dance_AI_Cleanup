@@ -4,15 +4,16 @@ import joblib
 import os
 import numpy as np
 import torch
-from transformers import RobertaTokenizer, RobertaForSequenceClassification
+import requests
+from io import BytesIO
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 app = Flask(__name__)
 CORS(app)
 
-# Load models
-MODELS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
-ROBERTA_MODEL_PATH = os.path.join(MODELS_DIR, "roberta_goemotions_6cat")
-SVR_MODEL_PATH = os.path.join(MODELS_DIR, "final_svr_model.joblib")
+# HuggingFace model configurations
+ROBERTA_MODEL_NAME = "anishdhandore/RoBERTa_text_classification"
+SVR_MODEL_URL = "https://huggingface.co/anishdhandore/SVR_text_intensity/resolve/main/final_svr_model.joblib"
 
 EMOTION_CATEGORIES = [
     'Positive_Affect_Joy',
@@ -25,14 +26,14 @@ EMOTION_CATEGORIES = [
 
 # Load models
 try:
-    # Load RoBERTa model and tokenizer
-    roberta_tokenizer = RobertaTokenizer.from_pretrained(ROBERTA_MODEL_PATH)
-    roberta_model = RobertaForSequenceClassification.from_pretrained(ROBERTA_MODEL_PATH)
+    # Load RoBERTa model and tokenizer from HuggingFace
+    roberta_tokenizer = AutoTokenizer.from_pretrained(ROBERTA_MODEL_NAME)
+    roberta_model = AutoModelForSequenceClassification.from_pretrained(ROBERTA_MODEL_NAME)
     roberta_model.eval()  # Set to evaluation mode
     
-    # Load SVR model for intensity
-    svr_model = joblib.load(SVR_MODEL_PATH)
-    print("Models loaded successfully")
+    # Load SVR model from HuggingFace
+    svr_model = joblib.load(BytesIO(requests.get(SVR_MODEL_URL).content))
+    print("Models loaded successfully from HuggingFace")
 except Exception as e:
     print(f"Error loading models: {e}")
     roberta_tokenizer = None
@@ -40,7 +41,7 @@ except Exception as e:
     svr_model = None
 
 def predict_emotions_roberta(text, threshold=0.3):
-    """Predict emotions using the RoBERTa model"""
+    """Predict emotions using the RoBERTa model from HuggingFace"""
     if roberta_tokenizer is None or roberta_model is None:
         return []
     
@@ -107,5 +108,5 @@ def predict():
     })
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5001))
     app.run(host='0.0.0.0', port=port)

@@ -52,8 +52,8 @@ out/
 *.model
 
 # Model directories (your actual model directories)
-models/
-backend/models/
+# models/
+# backend/models/
 
 # Large data files (uncomment if you don't want to track data)
 # *.csv
