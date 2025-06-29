@@ -40,12 +40,6 @@ A cutting-edge AI-powered dance generation platform that analyzes text emotions 
 - **Overall Accuracy:** 86.6%
 - **Hamming Loss:** 0.134
 - **Jaccard Score:** 0.498
-- **Category-wise F1 Scores:**
-  - Positive Affect Joy: 0.75
-  - Sadness Low Arousal: 0.48
-  - Anger High Arousal: 0.50
-  - Fear Anxiety: 0.44
-  - Surprise Epistemic: 0.43
 - **Training Efficiency:**
   - ~486 samples/sec, ~65 seconds per epoch, total training time ~1.5 hours
 
